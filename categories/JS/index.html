@@ -93,7 +93,7 @@
 <meta name="description" content="There Is No Limit But Yourself">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Husky's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/JS/index.html">
 <meta property="og:site_name" content="Husky's Blog">
 <meta property="og:description" content="There Is No Limit But Yourself">
 <meta name="twitter:card" content="summary">
@@ -116,7 +116,7 @@
   };
 </script>
 
-  <title> Husky's Blog </title>
+  <title> 分类: JS | Husky's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,9 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,251 +224,40 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/02/form表单下button的自动提交/" itemprop="url">
-                  form表单下button的自动提交
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-02T15:44:33+08:00" content="2016-11-02">
-              2016-11-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/02/form表单下button的自动提交/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/02/form表单下button的自动提交/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/02/form表单下button的自动提交/" class="leancloud_visitors" data-flag-title="form表单下button的自动提交">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天写表单的时候碰到一个奇怪的问题，因为是写个验证功能，我点击form下的一个button的时候弹出一个验证结果的alert，即使是失败了点完确认之后发现页面刷新了，查了下发现是表单自动被提交了…先看案例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;http://blog.linengs.com&quot; target=_blank&gt;</div><div class="line">	&lt;input type = &quot;text&quot;&gt;</div><div class="line">	&lt;button&gt;submit&lt;/button&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<p>此时，只含button元素或者一个或多个input，type不等于button的时候，点击button会跳转到我的blog.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;http://blog.linengs.com&quot; target=_blank&gt;</div><div class="line">	&lt;input type = &quot;text&quot;&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<p>上列中当form元素只有一个input时，点击输入框直接回车也能跳转到blog,而有多个input 的时候则不会触发自动提交，下面这种情况除外：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;http://blog.linengs.com&quot; target=_blank&gt;</div><div class="line">	&lt;input type = &quot;text&quot;&gt;</div><div class="line">	&lt;input type = &quot;hidden&quot; &gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<p>此外当含有&lt;input type=”submit” value=”提交”&gt;时表单也是会自动提交。来看下面这个列子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;http://blog.linengs.com&quot; target=_blank&gt;</div><div class="line">		&lt;input type = &quot;text&quot;&gt;</div><div class="line">		&lt;input type = &quot;button&quot; value=&quot;提交&quot;&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<p>这个时候发现是不能提交的，看来type=button时是不能提交表单的，那么对于button元素来说type=button是不是一样就不能自动提交了呢，答案是肯定的。<br>其实防止表单的自动提交我们还可以通过onsubmit = “false”,禁用回车键防止表单的自动提交，实际开发几乎所有的表单都是需要验证的，可以在提交的时候onsubmit=”return check()”在check方法中写我们的验证代码就OK啦~~</p>
-
-          
-        
-      
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        JS
+        <small>分类</small>
+      </h2>
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
 
     
       
 
-  
-  
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+      <h1 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2016/11/02/form表单下button的自动提交/" itemprop="url">
               
-                
-                <a class="post-title-link" href="/2016/06/01/test/" itemprop="url">
-                  开始在Hexo上写博客了
-                </a>
+                <span itemprop="name">form表单下button的自动提交</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T11:45:08+08:00" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-11-02T15:44:33+08:00"
+              content="2016-11-02" >
+          11-02
+        </time>
+      </div>
 
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/test/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/01/test/" class="leancloud_visitors" data-flag-title="开始在Hexo上写博客了">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>做开发也有段时间了，感觉每天接触的东西十分杂乱，去年开始学习swift和JavaScript，以前在博客园,简书和有道云笔记上做一些积累写写心得什么的，没有好好的对技术做个总的积累和沉淀。于是决定搞个hexo+githubPages开始自己的博客之路吧！给自己加油！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+    </header>
   </article>
 
 
@@ -478,6 +265,7 @@
   </section>
 
   
+
 
 
           </div>
